@@ -1,0 +1,40 @@
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material'
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+const Navbar = () => {
+  const navigate = useNavigate()
+let clearUser=()=>{
+  localStorage.removeItem("token");
+  navigate('/')
+}
+  return (
+    <>
+    <Box sx={{ flexGrow: 1 }}>
+   <AppBar position="static">
+     <Toolbar>
+       <IconButton
+         size="large"
+         edge="start"
+         color="inherit"
+         aria-label="menu"
+         sx={{ mr: 2 }}
+       >
+         {/* <MenuIcon /> */}
+       </IconButton>
+       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+         Employee
+       </Typography>
+
+       <Link to="/home"><Button variant="contained" >Home</Button></Link>
+       <Link to="/add"><Button  variant="contained" >Add</Button></Link>
+       <Button  variant="contained" onClick={clearUser} >Logout</Button>
+     </Toolbar>
+   </AppBar>
+ </Box>
+ <br />
+  </>
+  )
+}
+
+export default Navbar
